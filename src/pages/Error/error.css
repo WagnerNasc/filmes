@@ -1,0 +1,33 @@
+.error {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+div.error .image {
+    background: url(../../Assets/not_found.jpg) no-repeat;
+    background-size: 30rem;
+    width: 30rem;
+    height: 20rem;
+}
+
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    div.error .image {
+      background-image: url('../../Assets/not_found.jpg');
+      background-size: 20rem;
+      width: 20rem;
+      height: 12rem;
+    }
+  }
