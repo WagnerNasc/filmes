@@ -13,7 +13,7 @@ export default function Favoritos() {
 
         setFilmes(JSON.parse(minhaLista) || []);
         
-    }, [])
+    },)
 
     function handleDelete(id) {
         let filtroFilmes = filmes.filter((item) => {

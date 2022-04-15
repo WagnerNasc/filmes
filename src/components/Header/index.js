@@ -10,15 +10,23 @@ export default function Header() {
 
     useEffect(() => {
         const minhaLista = localStorage.getItem('filmes');
-        setCount(JSON.parse(minhaLista).length || []);
-        let teste = count;
+        setCount(JSON.parse(minhaLista).length || 0);
+
     }, [])
+
+    function handleMouseMove() {
+        const getCountFilmes = JSON.parse(localStorage.getItem('filmes')).length || 0;
+        console.log(getCountFilmes); //Sei que não é a melhor forma rs!
+        if(count != getCountFilmes) {
+            setCount(getCountFilmes);
+        }
+    }
 
     return(
         <header>
             <Link className="logo" to="/">Rengan Filmes</Link>
-            <Link className="icon-wrapper" to="/favoritos" data-number= {count}>
-                <img src={image} alt="" className="bell-icon"/>
+            <Link className="icon-wrapper" to="/favoritos" data-number= {count} onMouseMove={() => handleMouseMove()}>
+                <img src={image} alt="" className="bell-icon" />
             </Link>
         </header>
     )
