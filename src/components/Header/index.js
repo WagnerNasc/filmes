@@ -10,8 +10,8 @@ export default function Header() {
 
     useEffect(() => {
         
-        const minhaLista = JSON.parse(localStorage.getItem('filmes')).length || [];
-        
+        const minhaLista = JSON.parse(localStorage.getItem('filmes')).length;
+
         if(minhaLista > 0)
             setCount(minhaLista);
         else {
