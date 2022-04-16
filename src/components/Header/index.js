@@ -9,13 +9,19 @@ export default function Header() {
     // Use Effect para ciclo de vida e acessar localStorage e useState por conta dos estados
 
     useEffect(() => {
-        const minhaLista = localStorage.getItem('filmes');
-        setCount(JSON.parse(minhaLista).length || 0);
+        
+        const minhaLista = JSON.parse(localStorage.getItem('filmes')).length || [];
+        
+        if(minhaLista > 0)
+            setCount(minhaLista);
+        else {
+            setCount(0);
+        }
 
     }, [])
 
     function handleMouseMove() {
-        const getCountFilmes = JSON.parse(localStorage.getItem('filmes')).length || 0;
+        const getCountFilmes = JSON.parse(localStorage.getItem('filmes')).length || [];
         console.log(getCountFilmes); //Sei que não é a melhor forma rs!
         if(count != getCountFilmes) {
             setCount(getCountFilmes);
