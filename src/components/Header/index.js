@@ -9,12 +9,11 @@ export default function Header() {
     // Use Effect para ciclo de vida e acessar localStorage e useState por conta dos estados
 
     useEffect(() => {
+        const minhaLista = localStorage.getItem('filmes') || [];
         
-        const minhaLista = JSON.parse(localStorage.getItem('filmes')).length;
-
-        if(minhaLista > 0)
-            setCount(minhaLista);
-        else {
+        if(minhaLista.length > 0) {
+            setCount(JSON.parse(minhaLista).length);
+        } else {
             setCount(0);
         }
 
