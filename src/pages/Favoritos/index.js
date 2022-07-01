@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './favoritos.css';
 import { toast } from 'react-toastify';
 
@@ -9,11 +9,11 @@ export default function Favoritos() {
     // Use Effect para ciclo de vida e acessar localStorage e useState por conta dos estados
 
     useEffect(() => {
-        const minhaLista = localStorage.getItem('filmes');
+        const myList = localStorage.getItem('filmes');
 
-        setFilmes(JSON.parse(minhaLista) || []);
+        setFilmes(JSON.parse(myList) || []);
         
-    },)
+    },[])
 
     function handleDelete(id) {
         let filtroFilmes = filmes.filter((item) => {
@@ -30,16 +30,18 @@ export default function Favoritos() {
         <div id="meus-filmes">
             <h1>Meus Filmes</h1>
 
-            {filmes.length === 0 && <span>Você não possui filmes salvos :(</span>} 
+            {filmes.length === 0 && 
+                <span>Você não possui filmes salvos </span>
+            } 
             <ul>
                 {filmes.map((item) =>{
                     return(
                         <li key={item.id}>
-                            <span>{item.nome}</span>
+                            <span className="textFavorites">{item.nome}</span>
                         
                         <div>
                             <Link to={`./filme/${item.id}`}>Ver detalhes</Link>
-                            <button onClick={() => handleDelete(item.id)}>Excluir</button>
+                            <button className="btn-favorites" onClick={() => {handleDelete(item.id)}}>Excluir</button>
                         </div>
                         
                         </li>

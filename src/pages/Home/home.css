@@ -7,7 +7,7 @@
 }
 
 .lista-filmes {
-    margin: 0.9rem;
+    margin-top: 3rem;
 }
 
 .lista-filmes article {
@@ -16,8 +16,7 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    margin: 0.9rem;
-    padding: 0.9rem;
+    margin: 0.5rem;
     border-radius: 5px;
 }
 
@@ -27,7 +26,7 @@
 }
 
 .lista-filmes img {
-    width: 900px;
+    width: 600px;
     max-height: 350px;
 }
 
@@ -47,4 +46,11 @@
 .lista-filmes article a:hover {
     color: #f94d4b;
     background-color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+    .lista-filmes img {
+        width: 300px;
+        max-height: 150px;
+    }
 }

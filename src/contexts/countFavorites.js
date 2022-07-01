@@ -1,15 +1,43 @@
-import { userState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 
-export const UserContext = createContext({});
+export const AuthContext = createContext({});
 
-function UserProvider({children}) {
-    const [countFavorites, setCountFavorites] = userState('');
+function AuthProvider({ children }) {
+    const [ favorites, setFavorites ] = useState();
+
+    useEffect(() => {
+
+        function loadFavorites() {
+            // const myList = localStorage.getItem('filmes') || [];
+
+            // console.log(myList);
+            setFavorites(1);
+
+
+            
+            // if(myList.length > 0) {
+            //     setFavorites(1);
+            // } else {
+            //     setFavorites(1);
+            // }
+
+        }
+
+        loadFavorites();
+
+    }, [])
 
     return(
-        <UserContext.Provider values={{ countFavorites, setCountFavorites }}>
+        <AuthContext.Provider 
+            value= {{ 
+                favorites,
+                setFavorites
+            }}
+        >
+
             {children}
-        </UserContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
-export default UserProvider;
+export default AuthProvider;

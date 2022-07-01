@@ -2,15 +2,22 @@
     display: flex;
     flex-direction: column;
     max-width: 900px;
+    margin-top: 3rem;
+}
+
+.content-info {
+    margin: 0 6rem;
 }
 
 .filme-info img {
     border-radius: 20px;
+    width: 700px;
 }
 
 .filme-info h3 {
     font-weight: bold;
     font-size: 23px;
+    text-align: center;
 }
 
 .filme-info button {
@@ -40,3 +47,36 @@
     color: #fff; 
 }
 
+
+@media screen and (max-width: 800px) {
+    .content-info {
+        margin: 0 6rem;
+    }
+    .filme-info img {
+        width: 600px;
+        max-height: 250px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .content-info h1 {
+        font-size: 30px;
+        margin-top: 2rem;   
+    }
+
+    .filme-info h3 {
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 0.4em;
+    }
+
+    .content-info {
+        margin: 0 10rem;
+    }
+    .filme-info img {
+        width: 300px;
+        max-height: 250px;
+    }
+}

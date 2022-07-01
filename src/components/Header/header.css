@@ -5,6 +5,8 @@ header {
     width: 100%;
     height: 60px;
     background-color: #f94d4b;
+    position: fixed;
+    top: 0;
 }
 
 .logo {
@@ -17,33 +19,26 @@ header {
 .icon-wrapper {
     width: 50px;
     height: 50px; 
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-.icon-wrapper::after {
-    content: attr(data-number);
+.info {
     width: 20px;
     height: 20px;
     background-color: #fa2320;
     color: #fff;
     display: grid;
+    font-size: 1em;
     place-content: center;
     border-radius: 50%;
     position: absolute;
-    top: 8px;
+    top: 6px;
     right: 1px;
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(3px);
-}
-
-.icon-wrapper:hover::after {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity .25s,
-                transform .25s;
 }
 
 .bell-icon {

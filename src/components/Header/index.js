@@ -1,37 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/countFavorites';
 import { Link } from 'react-router-dom';
+
 import image from '../../Assets/bell_icon2.svg';
 import './header.css';
 
 export default function Header() {
-    const [count, setCount] = useState([]);
 
-    // Use Effect para ciclo de vida e acessar localStorage e useState por conta dos estados
+    const { favorites } = useContext(AuthContext);
 
-    useEffect(() => {
-        const minhaLista = localStorage.getItem('filmes') || [];
-        
-        if(minhaLista.length > 0) {
-            setCount(JSON.parse(minhaLista).length);
-        } else {
-            setCount(0);
-        }
-
-    }, [])
-
-    function handleMouseMove() {
-        const getCountFilmes = JSON.parse(localStorage.getItem('filmes')).length || [];
-        console.log(getCountFilmes); //Sei que não é a melhor forma rs!
-        if(count != getCountFilmes) {
-            setCount(getCountFilmes);
-        }
-    }
 
     return(
         <header>
             <Link className="logo" to="/">Rengan Filmes</Link>
-            <Link className="icon-wrapper" to="/favoritos" data-number= {count} onMouseMove={() => handleMouseMove()}>
-                <img src={image} alt="" className="bell-icon" />
+                 <Link className="icon-wrapper" to="/favoritos">
+                {favorites > 0 &&
+                    <span className="info">{favorites}</span>
+                }
+                <img src={image} alt="bell icon" className="bell-icon" />
             </Link>
         </header>
     )

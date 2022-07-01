@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import './filme-info.css';
 import { useParams, useHistory  } from 'react-router-dom';
 import api from '../../services/api';
+
 import { toast } from 'react-toastify';
+import './filme-info.css';
 
 export default function Filme() {
     const { id } = useParams();
@@ -40,7 +41,7 @@ export default function Filme() {
         /*Pega todos os filmes se tiver no localStorage*/
         const minhaLista = localStorage.getItem('filmes');
 
-        let filmesSalvos = JSON.parse(minhaLista) || []; // se não tiver nada na lista passsa um array vazio
+        let filmesSalvos = JSON.parse(minhaLista) || []; // se não tiver nada na lista passa um array vazio
 
         // Se o filme já tiver salvo deve ignorar
 
@@ -68,19 +69,22 @@ export default function Filme() {
 
     return(
         <div className="filme-info">
-            <h1>{filme.nome}</h1>
-            <img src={filme.foto} alt={filme.nome}/>
+            <div className="content-info">
 
-            <h3>Sinopse</h3>
-            <p>{filme.sinopse}</p>
+                <h1>{filme.nome}</h1>
+                <img src={filme.foto} alt={filme.nome}/>
 
-            <div>
-                <button onClick={salvaFilme}>Salvar</button>
-                <button>
-                    <a target="blank" href={`https://www.youtube.com/results?search_query=${filme.nome} Trailer`}>
-                        Trailer
-                    </a>
-                </button>
+                <h3>Sinopse</h3>
+                <p>{filme.sinopse}</p>
+
+                <div>
+                    <button onClick={salvaFilme}>Salvar</button>
+                    <button>
+                        <a target="blank" href={`https://www.youtube.com/results?search_query=${filme.nome} Trailer`}>
+                            Trailer
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
     )
